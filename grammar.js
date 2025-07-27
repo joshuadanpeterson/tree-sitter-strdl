@@ -36,7 +36,19 @@ module.exports = grammar({
       ')'
     )),
 
+    member_expression: $ => prec.left(seq(
+      $.expression,           // Base expression (like s("hh*8"))
+      repeat1(seq(            // One or more method calls
+        '.',                  // Dot operator
+        $.identifier,         // Method name (like 'phaser')
+        '(',                  // Opening parenthesis
+        commaSep($.expression), // Arguments
+        ')'                   // Closing parenthesis
+      ))
+    )),
+
     expression: $ => choice(
+      $.member_expression,
       $.function_call,
       $.string,
       $.number,
