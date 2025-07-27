@@ -92,6 +92,7 @@ uninstall:
 
 clean:
 	$(RM) $(OBJS) $(LANGUAGE_NAME).pc lib$(LANGUAGE_NAME).a lib$(LANGUAGE_NAME).$(SOEXT)
+	$(RM) -fr build/ node_modules/
 
 test:
 	$(TS) test
