@@ -1,6 +1,7 @@
 setcpm(30)
 
 // Drums
-$: s("bd sd bd rim, hh*8")
-//		.phaser(5)
+$: s("hh*8")
+KS: s("bd sd bd rim")
+//.phaser(5)
 

@@ -19,22 +19,22 @@ module.exports = grammar({
     source_file: $ => repeat($._statement), // Root Rule
 
     _statement: $ => choice(  // Hidden Rule, for structural organization
-      $.function_call,
       $.assignment,
+      $.function_call,
       $.comment
     ),
 
-    function_call: $ => seq(
+    assignment: $ => prec(2, choice(
+      seq('$:', $.expression), // Default Identifier 
+      seq($.identifier, ':', $.expression), // Custom Identifies
+    )),
+
+    function_call: $ => prec(1, seq(
       $.identifier,
       '(',
       commaSep($.expression),
       ')'
-    ),
-
-    assignment: $ => seq(
-      '$:',
-      $.expression
-    ),
+    )),
 
     expression: $ => choice(
       $.function_call,
@@ -53,11 +53,8 @@ module.exports = grammar({
       )),
       '"'
     ),
-
     number: $ => /\d+(\.\d+)?/,
-
     identifier: $ => /[a-zA-Z_]\w*/,
-
     comment: $ => token(seq('//', /(.*)?/)),
   }
 });
