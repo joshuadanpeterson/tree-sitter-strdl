@@ -1,0 +1,41 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "strudel",
+      "camelcase": "Strudel",
+      "title": "Strudel",
+      "scope": "source.strdl",
+      "file-types": [
+        "strdl",
+        "strudel"
+      ],
+      "injection-regex": "^strudel$",
+      "class-name": "TreeSitterStrudel"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "Parser for Strudel, a Tidal Cycles base live coding tool",
+    "authors": [
+      {
+        "name": "Zedro",
+        "email": "45104292+PedroZappa@users.noreply.github.com ",
+        "url": "https://www.pedrozappa.com/"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/PedroZappa/tree-sitter-strdl"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}
