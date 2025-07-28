@@ -18,7 +18,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "function_call"
+          "name": "expression"
         },
         {
           "type": "SYMBOL",
@@ -119,7 +119,7 @@
         ]
       }
     },
-    "member_expression": {
+    "chained_method": {
       "type": "PREC_LEFT",
       "value": 0,
       "content": {
@@ -127,7 +127,7 @@
         "members": [
           {
             "type": "SYMBOL",
-            "name": "expression"
+            "name": "_base_expression"
           },
           {
             "type": "REPEAT1",
@@ -189,16 +189,16 @@
         ]
       }
     },
-    "expression": {
+    "_base_expression": {
       "type": "CHOICE",
       "members": [
         {
           "type": "SYMBOL",
-          "name": "member_expression"
+          "name": "function_call"
         },
         {
           "type": "SYMBOL",
-          "name": "function_call"
+          "name": "identifier"
         },
         {
           "type": "SYMBOL",
@@ -207,10 +207,19 @@
         {
           "type": "SYMBOL",
           "name": "number"
+        }
+      ]
+    },
+    "expression": {
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "chained_method"
         },
         {
           "type": "SYMBOL",
-          "name": "identifier"
+          "name": "_base_expression"
         }
       ]
     },

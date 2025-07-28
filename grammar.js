@@ -20,15 +20,17 @@ module.exports = grammar({
 
     _statement: $ => choice(  // Hidden Rule, for structural organization
       $.assignment,
-      $.function_call,
+      $.expression,
       $.comment
     ),
 
+    /* 1. Accept *any* expression (including chains) */
     assignment: $ => prec(2, choice(
       seq('$:', $.expression), // Default Identifier 
       seq($.identifier, ':', $.expression), // Custom Identifies
     )),
 
+    /* 2. Simple Function Calls */
     function_call: $ => prec(1, seq(
       $.identifier,
       '(',
@@ -36,24 +38,26 @@ module.exports = grammar({
       ')'
     )),
 
-    member_expression: $ => prec.left(seq(
-      $.expression,           // Base expression (like s("hh*8"))
-      repeat1(seq(            // One or more method calls
-        '.',                  // Dot operator
-        $.identifier,         // Method name (like 'phaser')
-        '(',                  // Opening parenthesis
-        commaSep($.expression), // Arguments
-        ')'                   // Closing parenthesis
+    /* 3. Chain of one or more dot-calls */
+    chained_method: $ => prec.left(seq(
+      $._base_expression,
+      repeat1(seq(
+        '.', $.identifier, '(', commaSep($.expression), ')'
       ))
     )),
 
-    expression: $ => choice(
-      $.member_expression,
+    /* 4.  What can start a chain */
+    _base_expression: $ => choice(
       $.function_call,
+      $.identifier,
       $.string,
-      $.number,
-      $.identifier
-      // TODO: Add more rules...
+      $.number
+    ),
+
+    /* 5. Full Expression Hierarchy */
+    expression: $ => choice(
+      $.chained_method,
+      $._base_expression,
     ),
 
     // Terminal Rules
