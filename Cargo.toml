@@ -8,7 +8,7 @@ readme = "README.md"
 keywords = ["incremental", "parsing", "tree-sitter", "strudel"]
 categories = ["parser-implementations", "parsing", "text-editors"]
 repository = "https://github.com/pedrozappa/tree-sitter-strdl"
-edition = "2021"
+edition = "2025"
 autoexamples = false
 
 build = "bindings/rust/build.rs"
