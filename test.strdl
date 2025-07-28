@@ -3,6 +3,8 @@ setcpm(30)
 // Drums
 $: s("hh*8").gain(.5)
 
-const energy = slider(2,3,10)
-let drums = stack()
-var tree = "drums"; 
+var tree = 'drums'; 
+
+let beat = `
+yo yo yo
+`

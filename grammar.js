@@ -97,13 +97,22 @@ module.exports = grammar({
     ),
 
     /* 8. Terminal Rules */
-    string: $ => seq(
-      '"',
-      repeat(choice(
-        /[^"\\\n]/,
-        /\\./      // handle escapes
-      )),
-      '"'
+    string: $ => choice(
+      seq(
+        '"',
+        repeat(choice(/[^"\\\n]/, /\\./)),
+        '"'
+      ),
+      seq(
+        "'",
+        repeat(choice(/[^'\\\n]/, /\\./)),
+        "'"
+      ),
+      seq(
+        '`',
+        repeat(choice(/[^`\\\n]/, /\\./)),
+        '`'
+      )
     ),
     number: $ => /\d*\.\d+|\d+/,   // “.5”, “3.14”, “10”
     identifier: $ => /[a-zA-Z_]\w*/,
