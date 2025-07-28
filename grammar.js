@@ -38,15 +38,22 @@ module.exports = grammar({
       ')'
     )),
 
-    /* 3. Chain of one or more dot-calls */
+    /* 3. Method Calls */
+    method_call: $ => seq(
+      '.',
+      $.identifier,
+      '(',
+      commaSep($.expression),
+      ')'
+    ),
+
+    /* 4. Chain of one or more method-calls */
     chained_method: $ => prec.left(seq(
       $._base_expression,
-      repeat1(seq(
-        '.', $.identifier, '(', commaSep($.expression), ')'
-      ))
+      repeat1($.method_call)
     )),
 
-    /* 4.  What can start a chain */
+    /* 5. What can start a chain */
     _base_expression: $ => choice(
       $.function_call,
       $.identifier,
@@ -54,13 +61,13 @@ module.exports = grammar({
       $.number
     ),
 
-    /* 5. Full Expression Hierarchy */
+    /* 6. Full Expression Hierarchy */
     expression: $ => choice(
       $.chained_method,
       $._base_expression,
     ),
 
-    // Terminal Rules
+    /* 7. Terminal Rules */
     string: $ => seq(
       '"',
       repeat(choice(
@@ -69,7 +76,7 @@ module.exports = grammar({
       )),
       '"'
     ),
-    number: $ => /\d+(\.\d+)?/,
+    number: $ => /\d*\.\d+|\d+/,   // “.5”, “3.14”, “10”
     identifier: $ => /[a-zA-Z_]\w*/,
     comment: $ => token(seq('//', /(.*)?/)),
   }

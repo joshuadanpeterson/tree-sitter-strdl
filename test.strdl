@@ -3,5 +3,5 @@ setcpm(30)
 // Drums
 $: s("hh*8")
 KS: s("bd sd bd rim").phaser(5)
-//	.attack(.5)
+.attack(.5)
 
