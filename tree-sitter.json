@@ -11,13 +11,14 @@
         "strudel"
       ],
       "injection-regex": "^strudel$",
-      "class-name": "TreeSitterStrudel"
+      "class-name": "TreeSitterStrudel",
+      "highlights": "queries/highlights.scm"
     }
   ],
   "metadata": {
     "version": "0.1.0",
     "license": "MIT",
-    "description": "Parser for Strudel, a Tidal Cycles base live coding tool",
+    "description": "Parser for Strudel, a Tidal Cycles based live coding tool",
     "authors": [
       {
         "name": "Zedro",
