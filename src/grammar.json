@@ -461,6 +461,35 @@
         ]
       }
     },
+    "arrow_function": {
+      "type": "PREC",
+      "value": "arrow_function",
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "FIELD",
+            "name": "parameter",
+            "content": {
+              "type": "SYMBOL",
+              "name": "identifier"
+            }
+          },
+          {
+            "type": "STRING",
+            "value": "=>"
+          },
+          {
+            "type": "FIELD",
+            "name": "body",
+            "content": {
+              "type": "SYMBOL",
+              "name": "expression"
+            }
+          }
+        ]
+      }
+    },
     "expression": {
       "type": "PREC",
       "value": 2,
@@ -474,6 +503,10 @@
           {
             "type": "SYMBOL",
             "name": "binary_expression"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "arrow_function"
           },
           {
             "type": "SYMBOL",
@@ -786,7 +819,30 @@
     }
   ],
   "conflicts": [],
-  "precedences": [],
+  "precedences": [
+    [
+      {
+        "type": "STRING",
+        "value": "member"
+      },
+      {
+        "type": "STRING",
+        "value": "call"
+      },
+      {
+        "type": "STRING",
+        "value": "binary_times"
+      },
+      {
+        "type": "STRING",
+        "value": "binary_plus"
+      },
+      {
+        "type": "STRING",
+        "value": "arrow_function"
+      }
+    ]
+  ],
   "externals": [],
   "inline": [],
   "supertypes": [],

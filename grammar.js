@@ -15,6 +15,20 @@ module.exports = grammar({
     $.comment,        // enable comments
   ],
 
+  precedences: $ => [
+    [
+      'member',
+      'call',
+      'binary_times',
+      'binary_plus',
+      'arrow_function',
+    ],
+  ],
+
+  // conflicts: $ => [
+  //   [$._base_expression, $.arrow_function],  // Handle potential conflicts
+  // ],
+
   rules: {
     source_file: $ => repeat($._statement), // Root Rule
 
@@ -101,14 +115,22 @@ module.exports = grammar({
       $.binary_expression
     )),
 
-    /* 7. Full Expression Hierarchy */
+    /* 7. Arrow Function (Lambda) Support */
+    arrow_function: $ => prec('arrow_function', seq(
+      field('parameter', $.identifier),  // Single parameter
+      '=>',
+      field('body', $.expression)
+    )),
+
+    /* 8. Full Expression Hierarchy */
     expression: $ => prec(2, choice(  // Higher precedence
       $.chained_method,
       $.binary_expression,
+      $.arrow_function,
       $._base_expression,
     )),
 
-    /* 8. What can start a chain */
+    /* 9. What can start a chain */
     _base_expression: $ => choice(
       $.function_call,
       $.identifier,
@@ -119,7 +141,7 @@ module.exports = grammar({
       seq('(', $.expression, ')') // Parenthesized expressions
     ),
 
-    /* 9. Object Literal Support */
+    /* 10. Object Literal Support */
     object: $ => seq(
       '{',
       commaSep($.pair),
@@ -136,14 +158,14 @@ module.exports = grammar({
       field('value', $.expression)
     ),
 
-    /* 10. Array Literal Support */
+    /* 11. Array Literal Support */
     array: $ => seq(
       '[',
       commaSep($.expression),
       ']',
     ),
 
-    /* 11. Terminal Rules */
+    /* 12. Terminal Rules */
     string: $ => choice(
       seq(
         '"',
