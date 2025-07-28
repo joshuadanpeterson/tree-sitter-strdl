@@ -63,7 +63,7 @@ module.exports = grammar({
     function_call: $ => prec(1, seq(
       $.identifier,
       '(',
-      commaSep($.expression),
+      commaSepTrailing($.expression),
       ')'
     )),
 
@@ -72,7 +72,7 @@ module.exports = grammar({
       '.',
       $.identifier,
       '(',
-      commaSep($.expression),
+      commaSepTrailing($.expression),
       ')'
     ),
 
@@ -115,6 +115,7 @@ module.exports = grammar({
       $.string,
       $.number,
       $.object,
+      $.array,
       seq('(', $.expression, ')') // Parenthesized expressions
     ),
 
@@ -135,7 +136,14 @@ module.exports = grammar({
       field('value', $.expression)
     ),
 
-    /* 10. Terminal Rules */
+    /* 10. Array Literal Support */
+    array: $ => seq(
+      '[',
+      commaSep($.expression),
+      ']',
+    ),
+
+    /* 11. Terminal Rules */
     string: $ => choice(
       seq(
         '"',
@@ -166,4 +174,13 @@ function commaSep(rule) {
 // Helper for comma-separated lists (at least one)
 function commaSep1(rule) {
   return seq(rule, repeat(seq(',', rule)));
+}
+
+// Helper for comma-separated lists that ALLOW a trailing comma
+function commaSepTrailing(rule) {
+  return optional(seq(
+    rule,
+    repeat(seq(',', rule)),
+    optional(',')          // trailing comma
+  ));
 }
