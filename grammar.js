@@ -82,16 +82,7 @@ module.exports = grammar({
       repeat1($.method_call)
     )),
 
-    /* 6. What can start a chain */
-    _base_expression: $ => choice(
-      $.function_call,
-      $.identifier,
-      $.string,
-      $.number,
-      seq('(', $.expression, ')') // Parenthesized expressions
-    ),
-
-    /* 7. Binary Expressions for Arithmetic Operations */
+    /* 6. Binary Expressions for Arithmetic Operations */
     binary_expression: $ => prec(1, choice(
       $.additive_expression,
       $.multiplicative_expression,
@@ -110,14 +101,41 @@ module.exports = grammar({
       $.binary_expression
     )),
 
-    /* 8. Full Expression Hierarchy */
+    /* 7. Full Expression Hierarchy */
     expression: $ => prec(2, choice(  // Higher precedence
       $.chained_method,
       $.binary_expression,
       $._base_expression,
     )),
 
-    /* 9. Terminal Rules */
+    /* 8. What can start a chain */
+    _base_expression: $ => choice(
+      $.function_call,
+      $.identifier,
+      $.string,
+      $.number,
+      $.object,
+      seq('(', $.expression, ')') // Parenthesized expressions
+    ),
+
+    /* 9. Object Literal Support */
+    object: $ => seq(
+      '{',
+      commaSep($.pair),
+      '}'
+    ),
+
+    pair: $ => seq(
+      field('key', choice(
+        $.identifier,    // For keys like {edo: 10}
+        $.string,        // For keys like {"key": value}
+        $.number         // For keys like {1: value}
+      )),
+      ':',
+      field('value', $.expression)
+    ),
+
+    /* 10. Terminal Rules */
     string: $ => choice(
       seq(
         '"',
