@@ -26,6 +26,22 @@
 ")"              @punctuation.bracket
 
 ; ──────────────────────────────────────────────────────────────────────────
+; Arithmetic Operators (Binary Expressions)
+; ──────────────────────────────────────────────────────────────────────────
+; Capture arithmetic operators from binary expressions
+(additive_expression
+  operator: _ @operator)
+
+(multiplicative_expression
+  operator: _ @operator)
+
+; Alternative approach - directly capture operator literals
+"+"              @operator
+"-"              @operator
+"*"              @operator
+"/"              @operator
+
+; ──────────────────────────────────────────────────────────────────────────
 ; Literals
 ; ──────────────────────────────────────────────────────────────────────────
 (string)         @string
@@ -59,6 +75,12 @@
     .
     (identifier) @function.method))
 
-; Nothing else is needed here because the above identifier rules
-; already take care of nested names inside the chain.
+; ──────────────────────────────────────────────────────────────────────────
+; Binary Expression Highlighting
+; ──────────────────────────────────────────────────────────────────────────
+; Highlight the entire binary expressions for context
+(binary_expression) @expression
 
+; Specific highlighting for additive and multiplicative expressions
+(additive_expression) @expression.arithmetic
+(multiplicative_expression) @expression.arithmetic
