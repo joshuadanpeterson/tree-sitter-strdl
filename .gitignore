@@ -57,6 +57,8 @@ dkms.conf
 # Folders
 node_modules/
 build/
+src/
+bindings/
 
 # Artifacts
 *.wasm
