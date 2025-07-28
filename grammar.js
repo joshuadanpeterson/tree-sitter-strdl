@@ -20,17 +20,45 @@ module.exports = grammar({
 
     _statement: $ => choice(  // Hidden Rule, for structural organization
       $.assignment,
+      $.variable_declaration,
+      $.lexical_declaration,
       $.expression,
       $.comment
     ),
 
-    /* 1. Accept *any* expression (including chains) */
+    /* 1. Variables */
+    // Variable delcaration with 'var'
+    variable_declaration: $ => seq(
+      'var',
+      commaSep1($.variable_declarator),
+      optional(';')
+    ),
+
+    //
+    lexical_declaration: $ => seq(
+      field('kind', choice('let', 'const')),
+      commaSep1($.variable_declarator),
+      optional(';')
+    ),
+
+    variable_declarator: $ => seq(
+      field('name', $.identifier),
+      optional($._initializer),
+    ),
+
+    /* Initializer for variable assignments */
+    _initializer: $ => seq(
+      '=',
+      field('value', $.expression)
+    ),
+
+    /* 2. Accept *any* expression (including chains) */
     assignment: $ => prec(2, choice(
       seq('$:', $.expression), // Default Identifier 
       seq($.identifier, ':', $.expression), // Custom Identifies
     )),
 
-    /* 2. Simple Function Calls */
+    /* 3. Simple Function Calls */
     function_call: $ => prec(1, seq(
       $.identifier,
       '(',
@@ -38,7 +66,7 @@ module.exports = grammar({
       ')'
     )),
 
-    /* 3. Method Calls */
+    /* 4. Method Calls */
     method_call: $ => seq(
       '.',
       $.identifier,
@@ -47,13 +75,13 @@ module.exports = grammar({
       ')'
     ),
 
-    /* 4. Chain of one or more method-calls */
+    /* 5. Chain of one or more method-calls */
     chained_method: $ => prec.left(seq(
       $._base_expression,
       repeat1($.method_call)
     )),
 
-    /* 5. What can start a chain */
+    /* 6. What can start a chain */
     _base_expression: $ => choice(
       $.function_call,
       $.identifier,
@@ -61,13 +89,13 @@ module.exports = grammar({
       $.number
     ),
 
-    /* 6. Full Expression Hierarchy */
+    /* 7. Full Expression Hierarchy */
     expression: $ => choice(
       $.chained_method,
       $._base_expression,
     ),
 
-    /* 7. Terminal Rules */
+    /* 8. Terminal Rules */
     string: $ => seq(
       '"',
       repeat(choice(
@@ -85,4 +113,8 @@ module.exports = grammar({
 // Helper for comma-separated lists
 function commaSep(rule) {
   return optional(seq(rule, repeat(seq(',', rule))));
+}
+// Helper for comma-separated lists (at least one)
+function commaSep1(rule) {
+  return seq(rule, repeat(seq(',', rule)));
 }
