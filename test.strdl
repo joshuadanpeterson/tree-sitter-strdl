@@ -1,10 +1,2 @@
 setcpm(30)
 
-// Drums
-$: s("hh*8").gain(.5)
-
-var tree = 'drums'; 
-
-let beat = `
-yo yo yo
-`
