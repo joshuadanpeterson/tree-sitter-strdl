@@ -60,3 +60,5 @@ build/
 
 # Artifacts
 *.wasm
+src/parser.c
+src/*.h
