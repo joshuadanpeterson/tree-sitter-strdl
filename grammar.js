@@ -34,13 +34,14 @@ module.exports = grammar({
       optional(';')
     ),
 
-    //
+    // Variable declaration with 'let' or 'const'
     lexical_declaration: $ => seq(
       field('kind', choice('let', 'const')),
       commaSep1($.variable_declarator),
       optional(';')
     ),
 
+    // Variable declarator - handles the name = value part
     variable_declarator: $ => seq(
       field('name', $.identifier),
       optional($._initializer),
