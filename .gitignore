@@ -62,4 +62,3 @@ bindings/
 
 # Artifacts
 *.wasm
-binding.gyp
