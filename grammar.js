@@ -87,16 +87,37 @@ module.exports = grammar({
       $.function_call,
       $.identifier,
       $.string,
-      $.number
+      $.number,
+      seq('(', $.expression, ')') // Parenthesized expressions
     ),
 
-    /* 7. Full Expression Hierarchy */
-    expression: $ => choice(
+    /* 7. Binary Expressions for Arithmetic Operations */
+    binary_expression: $ => prec(1, choice(
+      $.additive_expression,
+      $.multiplicative_expression,
+      $._base_expression
+    )),
+    // Addition and Subtraction (lowest precedence)
+    additive_expression: $ => prec.left(1, seq(
+      $.binary_expression,
+      field('operator', choice('+', '-')),
+      $.binary_expression
+    )),
+    // Multiplication and Division (higher precedence)
+    multiplicative_expression: $ => prec.left(2, seq(
+      $.binary_expression,
+      field('operator', choice('*', '/')),
+      $.binary_expression
+    )),
+
+    /* 8. Full Expression Hierarchy */
+    expression: $ => prec(2, choice(  // Higher precedence
       $.chained_method,
+      $.binary_expression,
       $._base_expression,
-    ),
+    )),
 
-    /* 8. Terminal Rules */
+    /* 9. Terminal Rules */
     string: $ => choice(
       seq(
         '"',
