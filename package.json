@@ -48,7 +48,7 @@
     "prestart": "tree-sitter build --wasm",
     "start": "tree-sitter playground",
     "test": "node --test bindings/node/*_test.js",
-    "local_install": "cp queries/*scm ~/.local/share/nvim/lazy/nvim-treesitter/queries/strudel; echo 'RUN :TSInstall strdl' in nvim"
+    "local_install": "./scripts/local_install.sh"
   },
   "tree-sitter": [
     {
