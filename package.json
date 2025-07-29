@@ -58,7 +58,7 @@
         "strudel"
       ],
       "highlights": [
-        "queries/strudel/highlights.scm"
+        "queries/highlights.scm"
       ]
     }
   ]
