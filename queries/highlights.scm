@@ -11,10 +11,6 @@
 ; ──────────────────────────────────────────────────────────────────────────
 (identifier)  @variable
 
-((identifier) @function.method
-  (#is-not? local)
-)
-
 [
   "$:"           ; default assignment prefix
   "var"          ; variable declaration
