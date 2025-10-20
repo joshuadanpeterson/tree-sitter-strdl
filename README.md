@@ -27,7 +27,7 @@ parser_config.strudel = {
 }
 
 vim.api.nvim_create_autocmd("BufRead", {
-  pattern = { "*.strdl", "*.strudel" },
+  pattern = { "*.strdl", "*.strudel", "*.str" },
   callback = function()
     vim.bo.filetype = "strdl"
   end,
