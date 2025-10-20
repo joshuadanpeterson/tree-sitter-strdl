@@ -55,7 +55,8 @@
       "scope": "source.strdl",
       "file-types": [
         "strdl",
-        "strudel"
+        "strudel",
+        "str"
       ],
       "highlights": [
         "queries/highlights.scm"
