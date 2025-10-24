@@ -226,5 +226,97 @@
   (_ (string) @string.special))
   (#any-of? @mname "s" "sound" "n" "note" "scale" "chord" "arp" "gain" "speed" "pan" "cutoff" "lpf" "hpf" "hpq" "delay" "rev" "stack" "cat"))
 
-; Fallback: any remaining identifiers as variables
+; Fallback: any remaining identifiers as variables; BEGIN: AUTO-GENERATED DOMAIN CAPTURES
+; Domain-specific identifiers from Strudel LS builtins.json
+; This block is auto-generated. Do not edit by hand.
+((function_call
+  (identifier)   @function.call)
+  (#any-of? @function.call "DoughVoice" "OLAProcessor" "Pattern" "_begin" "_bpenv" "_bpf" "_buffers" "_channels" "_chorus" "_coarse" "_crush" "_distort" "_duration" "_euclidRot" "_fm" "_fmenv" "_hpenv" "_hpf" "_lpenv" "_lpf" "_penv" "_sound" "absOriA" "absOriB" "absOriG" "absOriX" "absOriY" "absOriZ" "absoluteOrientationAlpha" "absoluteOrientationBeta" "absoluteOrientationGamma" "absoluteOrientationX" "absoluteOrientationY" "absoluteOrientationZ" "accX" "accY" "accZ" "accelerate" "accelerationX" "accelerationY" "accelerationZ" "add" "addVoicings" "adsr" "aliasBank" "allTransforms" "almostAlways" "almostNever" "always" "amp" "appBoth" "appLeft" "appRight" "appWhole" "apply" "applyGradualLowpass" "applyHannWindow" "applyN" "arp" "arpWith" "arrange" "as" "asym" "att" "attack" "bandf" "bandq" "bank" "bbexpr" "bbst" "beat" "begin" "berlin" "binary" "binaryN" "bite" "bp" "bpa" "bpattack" "bpd")
+  (#set! "priority" 120))
+
+((function_call
+  (identifier)   @function.call)
+  (#any-of? @function.call "bpdecay" "bpe" "bpenv" "bpf" "bpq" "bpr" "bprelease" "bps" "bpsustain" "brak" "brand" "brandBy" "bypass" "byteBeatExpression" "byteBeatStartTime" "cat" "ccn" "ccv" "ceil" "ch" "channel" "channels" "chebyshev" "choose" "choose2" "chooseCycles" "chooseInWith" "chooseWith" "chop" "chorus" "chunk" "chunkBack" "chunkBackInto" "chunkInto" "chunkback" "chunkbackinto" "chunkinto" "chyx" "clip" "coarse" "color" "colour" "compress" "compressSpan" "compressor" "compressspan" "computeMagnitudes" "contract" "control" "cosine" "cosine2" "cpm" "crossfade" "crush" "csoundm" "ctf" "cubic" "cut" "cutoff" "dec" "decay" "defaultmidimap" "defragmentHaps" "degrade" "degradeBy" "delay" "delayfb" "delayfeedback" "delayspeed" "delaysync" "delayt" "density" "det" "detune" "dfb" "diode" "discreteOnly" "dist" "distort" "distorttype")
+  (#set! "priority" 120))
+
+((function_call
+  (identifier)   @function.call)
+  (#any-of? @function.call "distortvol" "disttype" "distvol" "div" "djf" "drawLine" "drive" "drop" "dry" "dt" "duck" "duckatt" "duckattack" "duckdepth" "duckons" "duckonset" "duckorbit" "dur" "duration" "each" "early" "echo" "echoWith" "echowith" "eish" "end" "euclid" "euclidLegato" "euclidLegatoRot" "euclidRot" "euclidish" "every" "expand" "extend" "fanchor" "fast" "fastChunk" "fastGap" "fastcat" "fastchunk" "fastgap" "filter" "filterHaps" "filterValues" "filterWhen" "findPeaks" "firstCycle" "firstCycleValues" "firstOf" "fit" "floor" "fm" "fmap" "fmattack" "fmdecay" "fmenv" "fmh" "fmi" "fmrelease" "fmsustain" "fmwave" "focus" "focusSpan" "focusspan" "fold" "freq" "fromBipolar" "fscope" "ftype" "gain" "gap" "generateGraph" "generateReverb" "getAllChannelData" "getFreq" "gravX" "gravY" "gravZ" "gravityX" "gravityY")
+  (#set! "priority" 120))
+
+((function_call
+  (identifier)   @function.call)
+  (#any-of? @function.call "gravityZ" "grow" "handleOutputBuffersToRetrieve" "hard" "hcutoff" "hp" "hpa" "hpattack" "hpd" "hpdecay" "hpe" "hpenv" "hpf" "hpq" "hpr" "hprelease" "hps" "hpsustain" "hresonance" "hsl" "hsla" "hurry" "hush" "id" "inhabit" "inhabitmod" "inside" "into" "inv" "invert" "ir" "irand" "irbegin" "iresponse" "irspeed" "isaw" "isaw2" "iter" "iterBack" "iterback" "itri" "itri2" "jux" "juxBy" "juxby" "keyDown" "label" "lastOf" "late" "layer" "legato" "leslie" "linger" "lock" "log" "logValues" "loop" "loopAt" "loopAtCps" "loopBegin" "loopEnd" "loopat" "loopatcps" "loopb" "loope" "lp" "lpa" "lpattack" "lpd" "lpdecay" "lpe" "lpenv" "lpf" "lpq" "lpr" "lprelease" "lps" "lpsustain" "lrate" "lsize")
+  (#set! "priority" 120))
+
+((function_call
+  (identifier)   @function.call)
+  (#any-of? @function.call "markcss" "mask" "midi" "midi2note" "midibend" "midichan" "midicmd" "midimaps" "midin" "midiport" "miditouch" "morph" "mousex" "mousey" "mul" "n" "never" "noise" "note" "nrpnn" "nrpv" "octave" "off" "often" "onTriggerTime" "onsetsOnly" "orbit" "oriA" "oriB" "oriG" "oriX" "oriY" "oriZ" "orientationAlpha" "orientationBeta" "orientationGamma" "orientationX" "orientationY" "orientationZ" "osc" "out" "outside" "pace" "palindrome" "pan" "panchor" "patt" "pattack" "pcurve" "pdec" "pdecay" "penv" "perlin" "ph" "phasdp" "phaser" "phasercenter" "phaserdepth" "phasersweep" "phc" "phd" "phs" "pianoroll" "pick" "pickF" "pickOut" "pickReset" "pickRestart" "pickSqueeze" "pickmod" "pickmodF" "pickmodOut" "pickmodReset" "pickmodRestart" "pickmodSqueeze" "pitchwheel" "ply" "plyForEach" "plyWith" "plyforeach")
+  (#set! "priority" 120))
+
+((function_call
+  (identifier)   @function.call)
+  (#any-of? @function.call "plywith" "pm" "polymeter" "polyrhythm" "postgain" "pr" "prel" "prelease" "prepareInputBuffersToSend" "press" "pressBy" "progNum" "psustain" "punchcard" "pure" "pw" "pwrate" "pwsweep" "queryArc" "rand" "rand2" "randcat" "randomSample" "range" "range2" "rangex" "rarely" "ratio" "rdim" "readInputs" "reallocateChannelsIfNeeded" "ref" "register" "rel" "release" "removeUndefineds" "repeatCycles" "reset" "resonance" "restart" "rev" "rfade" "rib" "ribbon" "rlp" "room" "roomdim" "roomfade" "roomlp" "roomsize" "rootNotes" "rotA" "rotB" "rotG" "rotX" "rotY" "rotZ" "rotationAlpha" "rotationBeta" "rotationGamma" "rotationX" "rotationY" "rotationZ" "round" "rsize" "run" "s" "samples" "saw" "saw2" "scale" "scaleTrans" "scaleTranspose" "scope" "scramble" "scrub" "seg" "segment" "seq" "seqPLoop")
+  (#set! "priority" 120))
+
+((function_call
+  (identifier)   @function.call)
+  (#any-of? @function.call "sequence" "sequenceP" "setContext" "setcpm" "shape" "shiftInputBuffers" "shiftOutputBuffers" "shiftPeaks" "showFirstCycle" "shrink" "shuffle" "silence" "sine" "sine2" "sinefold" "size" "slice" "slider" "slow" "slowChunk" "slowcat" "slowcatPrime" "slowchunk" "soft" "someCycles" "someCyclesBy" "sometimes" "sometimesBy" "sortHapsByPart" "sound" "soundAlias" "source" "sparsity" "spectrum" "speed" "spiral" "splice" "splitQueries" "spread" "square" "square2" "squeeze" "squiz" "src" "stack" "stepalt" "stepcat" "strans" "stretch" "striate" "stripContext" "struct" "stut" "stutWith" "stutwith" "sub" "superimpose" "sus" "sustain" "swing" "swingBy" "sysex" "sysexdata" "sysexid" "sz" "tables" "tag" "take" "time" "timeCat" "timecat" "toBipolar" "tour" "trans" "transpose" "trem" "tremdepth" "tremolo" "tremolodepth" "tremolophase")
+  (#set! "priority" 120))
+
+((function_call
+  (identifier)   @function.call)
+  (#any-of? @function.call "tremoloshape" "tremoloskew" "tremolosync" "tremphase" "tremshape" "tremskew" "tremsync" "tri" "tri2" "tscope" "undegrade" "undegradeBy" "unison" "unit" "v" "velocity" "vib" "vibmod" "vibrato" "vmod" "voicing" "voicings" "vowel" "warp" "warpatt" "warpattack" "warpdc" "warpdec" "warpdecay" "warpdepth" "warpenv" "warpmode" "warprate" "warprel" "warprelease" "warpshape" "warpskew" "warpsus" "warpsustain" "warpsync" "wavetablePhaseRand" "wavetablePosition" "wavetableWarp" "wavetableWarpMode" "wchoose" "wchooseCycles" "when" "whenKey" "withContext" "withHap" "withHapSpan" "withHapTime" "withHaps" "withLoc" "withQuerySpan" "withQueryTime" "withValue" "within" "wordfall" "wrandcat" "writeOutputs" "wt" "wtatt" "wtattack" "wtdc" "wtdec" "wtdecay" "wtdepth" "wtenv" "wtphaserand" "wtrate" "wtrel" "wtrelease" "wtshape" "wtskew" "wtsus" "wtsustain" "wtsync" "xfade" "zip")
+  (#set! "priority" 120))
+
+((function_call
+  (identifier)   @function.call)
+  (#any-of? @function.call "zoom" "zoomArc" "zoomarc")
+  (#set! "priority" 120))
+((method_call
+  (identifier)   @method)
+  (#any-of? @method "DoughVoice" "OLAProcessor" "Pattern" "_begin" "_bpenv" "_bpf" "_buffers" "_channels" "_chorus" "_coarse" "_crush" "_distort" "_duration" "_euclidRot" "_fm" "_fmenv" "_hpenv" "_hpf" "_lpenv" "_lpf" "_penv" "_sound" "absOriA" "absOriB" "absOriG" "absOriX" "absOriY" "absOriZ" "absoluteOrientationAlpha" "absoluteOrientationBeta" "absoluteOrientationGamma" "absoluteOrientationX" "absoluteOrientationY" "absoluteOrientationZ" "accX" "accY" "accZ" "accelerate" "accelerationX" "accelerationY" "accelerationZ" "add" "addVoicings" "adsr" "aliasBank" "allTransforms" "almostAlways" "almostNever" "always" "amp" "appBoth" "appLeft" "appRight" "appWhole" "apply" "applyGradualLowpass" "applyHannWindow" "applyN" "arp" "arpWith" "arrange" "as" "asym" "att" "attack" "bandf" "bandq" "bank" "bbexpr" "bbst" "beat" "begin" "berlin" "binary" "binaryN" "bite" "bp" "bpa" "bpattack" "bpd")
+  (#set! "priority" 120))
+
+((method_call
+  (identifier)   @method)
+  (#any-of? @method "bpdecay" "bpe" "bpenv" "bpf" "bpq" "bpr" "bprelease" "bps" "bpsustain" "brak" "brand" "brandBy" "bypass" "byteBeatExpression" "byteBeatStartTime" "cat" "ccn" "ccv" "ceil" "ch" "channel" "channels" "chebyshev" "choose" "choose2" "chooseCycles" "chooseInWith" "chooseWith" "chop" "chorus" "chunk" "chunkBack" "chunkBackInto" "chunkInto" "chunkback" "chunkbackinto" "chunkinto" "chyx" "clip" "coarse" "color" "colour" "compress" "compressSpan" "compressor" "compressspan" "computeMagnitudes" "contract" "control" "cosine" "cosine2" "cpm" "crossfade" "crush" "csoundm" "ctf" "cubic" "cut" "cutoff" "dec" "decay" "defaultmidimap" "defragmentHaps" "degrade" "degradeBy" "delay" "delayfb" "delayfeedback" "delayspeed" "delaysync" "delayt" "density" "det" "detune" "dfb" "diode" "discreteOnly" "dist" "distort" "distorttype")
+  (#set! "priority" 120))
+
+((method_call
+  (identifier)   @method)
+  (#any-of? @method "distortvol" "disttype" "distvol" "div" "djf" "drawLine" "drive" "drop" "dry" "dt" "duck" "duckatt" "duckattack" "duckdepth" "duckons" "duckonset" "duckorbit" "dur" "duration" "each" "early" "echo" "echoWith" "echowith" "eish" "end" "euclid" "euclidLegato" "euclidLegatoRot" "euclidRot" "euclidish" "every" "expand" "extend" "fanchor" "fast" "fastChunk" "fastGap" "fastcat" "fastchunk" "fastgap" "filter" "filterHaps" "filterValues" "filterWhen" "findPeaks" "firstCycle" "firstCycleValues" "firstOf" "fit" "floor" "fm" "fmap" "fmattack" "fmdecay" "fmenv" "fmh" "fmi" "fmrelease" "fmsustain" "fmwave" "focus" "focusSpan" "focusspan" "fold" "freq" "fromBipolar" "fscope" "ftype" "gain" "gap" "generateGraph" "generateReverb" "getAllChannelData" "getFreq" "gravX" "gravY" "gravZ" "gravityX" "gravityY")
+  (#set! "priority" 120))
+
+((method_call
+  (identifier)   @method)
+  (#any-of? @method "gravityZ" "grow" "handleOutputBuffersToRetrieve" "hard" "hcutoff" "hp" "hpa" "hpattack" "hpd" "hpdecay" "hpe" "hpenv" "hpf" "hpq" "hpr" "hprelease" "hps" "hpsustain" "hresonance" "hsl" "hsla" "hurry" "hush" "id" "inhabit" "inhabitmod" "inside" "into" "inv" "invert" "ir" "irand" "irbegin" "iresponse" "irspeed" "isaw" "isaw2" "iter" "iterBack" "iterback" "itri" "itri2" "jux" "juxBy" "juxby" "keyDown" "label" "lastOf" "late" "layer" "legato" "leslie" "linger" "lock" "log" "logValues" "loop" "loopAt" "loopAtCps" "loopBegin" "loopEnd" "loopat" "loopatcps" "loopb" "loope" "lp" "lpa" "lpattack" "lpd" "lpdecay" "lpe" "lpenv" "lpf" "lpq" "lpr" "lprelease" "lps" "lpsustain" "lrate" "lsize")
+  (#set! "priority" 120))
+
+((method_call
+  (identifier)   @method)
+  (#any-of? @method "markcss" "mask" "midi" "midi2note" "midibend" "midichan" "midicmd" "midimaps" "midin" "midiport" "miditouch" "morph" "mousex" "mousey" "mul" "n" "never" "noise" "note" "nrpnn" "nrpv" "octave" "off" "often" "onTriggerTime" "onsetsOnly" "orbit" "oriA" "oriB" "oriG" "oriX" "oriY" "oriZ" "orientationAlpha" "orientationBeta" "orientationGamma" "orientationX" "orientationY" "orientationZ" "osc" "out" "outside" "pace" "palindrome" "pan" "panchor" "patt" "pattack" "pcurve" "pdec" "pdecay" "penv" "perlin" "ph" "phasdp" "phaser" "phasercenter" "phaserdepth" "phasersweep" "phc" "phd" "phs" "pianoroll" "pick" "pickF" "pickOut" "pickReset" "pickRestart" "pickSqueeze" "pickmod" "pickmodF" "pickmodOut" "pickmodReset" "pickmodRestart" "pickmodSqueeze" "pitchwheel" "ply" "plyForEach" "plyWith" "plyforeach")
+  (#set! "priority" 120))
+
+((method_call
+  (identifier)   @method)
+  (#any-of? @method "plywith" "pm" "polymeter" "polyrhythm" "postgain" "pr" "prel" "prelease" "prepareInputBuffersToSend" "press" "pressBy" "progNum" "psustain" "punchcard" "pure" "pw" "pwrate" "pwsweep" "queryArc" "rand" "rand2" "randcat" "randomSample" "range" "range2" "rangex" "rarely" "ratio" "rdim" "readInputs" "reallocateChannelsIfNeeded" "ref" "register" "rel" "release" "removeUndefineds" "repeatCycles" "reset" "resonance" "restart" "rev" "rfade" "rib" "ribbon" "rlp" "room" "roomdim" "roomfade" "roomlp" "roomsize" "rootNotes" "rotA" "rotB" "rotG" "rotX" "rotY" "rotZ" "rotationAlpha" "rotationBeta" "rotationGamma" "rotationX" "rotationY" "rotationZ" "round" "rsize" "run" "s" "samples" "saw" "saw2" "scale" "scaleTrans" "scaleTranspose" "scope" "scramble" "scrub" "seg" "segment" "seq" "seqPLoop")
+  (#set! "priority" 120))
+
+((method_call
+  (identifier)   @method)
+  (#any-of? @method "sequence" "sequenceP" "setContext" "setcpm" "shape" "shiftInputBuffers" "shiftOutputBuffers" "shiftPeaks" "showFirstCycle" "shrink" "shuffle" "silence" "sine" "sine2" "sinefold" "size" "slice" "slider" "slow" "slowChunk" "slowcat" "slowcatPrime" "slowchunk" "soft" "someCycles" "someCyclesBy" "sometimes" "sometimesBy" "sortHapsByPart" "sound" "soundAlias" "source" "sparsity" "spectrum" "speed" "spiral" "splice" "splitQueries" "spread" "square" "square2" "squeeze" "squiz" "src" "stack" "stepalt" "stepcat" "strans" "stretch" "striate" "stripContext" "struct" "stut" "stutWith" "stutwith" "sub" "superimpose" "sus" "sustain" "swing" "swingBy" "sysex" "sysexdata" "sysexid" "sz" "tables" "tag" "take" "time" "timeCat" "timecat" "toBipolar" "tour" "trans" "transpose" "trem" "tremdepth" "tremolo" "tremolodepth" "tremolophase")
+  (#set! "priority" 120))
+
+((method_call
+  (identifier)   @method)
+  (#any-of? @method "tremoloshape" "tremoloskew" "tremolosync" "tremphase" "tremshape" "tremskew" "tremsync" "tri" "tri2" "tscope" "undegrade" "undegradeBy" "unison" "unit" "v" "velocity" "vib" "vibmod" "vibrato" "vmod" "voicing" "voicings" "vowel" "warp" "warpatt" "warpattack" "warpdc" "warpdec" "warpdecay" "warpdepth" "warpenv" "warpmode" "warprate" "warprel" "warprelease" "warpshape" "warpskew" "warpsus" "warpsustain" "warpsync" "wavetablePhaseRand" "wavetablePosition" "wavetableWarp" "wavetableWarpMode" "wchoose" "wchooseCycles" "when" "whenKey" "withContext" "withHap" "withHapSpan" "withHapTime" "withHaps" "withLoc" "withQuerySpan" "withQueryTime" "withValue" "within" "wordfall" "wrandcat" "writeOutputs" "wt" "wtatt" "wtattack" "wtdc" "wtdec" "wtdecay" "wtdepth" "wtenv" "wtphaserand" "wtrate" "wtrel" "wtrelease" "wtshape" "wtskew" "wtsus" "wtsustain" "wtsync" "xfade" "zip")
+  (#set! "priority" 120))
+
+((method_call
+  (identifier)   @method)
+  (#any-of? @method "zoom" "zoomArc" "zoomarc")
+  (#set! "priority" 120))
+; END: AUTO-GENERATED DOMAIN CAPTURES
+
 (identifier) @variable

@@ -48,7 +48,8 @@
     "prestart": "tree-sitter build --wasm",
     "start": "tree-sitter playground",
     "test": "node --test bindings/node/*_test.js",
-    "local_install": "./scripts/local_install.sh"
+    "local_install": "./scripts/local_install.sh",
+    "generate:domain": "node scripts/generate_domain_queries.js --builtins \"$STRUDEL_LS_BUILTINS\" --sounds \"$STRUDEL_LS_SOUNDS\" --highlights queries/highlights.scm"
   },
   "tree-sitter": [
     {
