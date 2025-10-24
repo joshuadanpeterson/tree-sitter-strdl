@@ -9,7 +9,6 @@
 ; ──────────────────────────────────────────────────────────────────────────
 ; Keywords
 ; ──────────────────────────────────────────────────────────────────────────
-(identifier)  @variable
 
 [
   "$:"           ; default assignment prefix
@@ -71,12 +70,14 @@
 ; Identifiers (Functions & Vars)
 ; ──────────────────────────────────────────────────────────────────────────
 ; 1. Function call identifiers
-(function_call
+((function_call
   (identifier)   @function.call)
+  (#set! "priority" 110))
 
 ; 2. Method call identifiers (after the dot)
-(method_call
-  (identifier)   @function.method)
+((method_call
+  (identifier)   @method)
+  (#set! "priority" 110))
 
 ; 3. Variable declarations: names on the LHS
 (variable_declarator
@@ -150,10 +151,11 @@
 ; Expressions & Chains
 ; ──────────────────────────────────────────────────────────────────────────
 ; Highlight the leading identifier of a chained method sequence
-(chained_method
+((chained_method
   (_
     .
-    (identifier) @function.method))
+    (identifier) @method))
+  (#set! "priority" 110))
 
 (arrow_function
   parameter: (identifier) @variable.parameter
