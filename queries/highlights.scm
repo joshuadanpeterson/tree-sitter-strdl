@@ -145,7 +145,6 @@
   )
 
 ; 5. All remaining identifiers default to variable
-(identifier)     @variable
 
 ; ──────────────────────────────────────────────────────────────────────────
 ; Expressions & Chains
@@ -202,3 +201,28 @@
 
 ; Array literals
 (array) @constructor
+
+
+; ──────────────────────────────────────────────────────────────────────────
+; Mini-notation tagging and booleans (Phase 2)
+; Seed: ^(s|sound|n|note|scale|chord|arp|gain|speed|pan|cutoff|lpf|hpf|hpq|delay|rev|stack|cat)$
+; ──────────────────────────────────────────────────────────────────────────
+
+; Booleans (identifiers 'true'/'false')
+((identifier) @boolean
+  (#match? @boolean "^(true|false)$"))
+
+; Strings inside pattern-bearing function calls
+((function_call
+  (identifier) @fname
+  (_ (string) @string.special))
+  (#any-of? @fname "s" "sound" "n" "note" "scale" "chord" "arp" "gain" "speed" "pan" "cutoff" "lpf" "hpf" "hpq" "delay" "rev" "stack" "cat"))
+
+; Strings inside pattern-bearing method calls
+((method_call
+  (identifier) @mname
+  (_ (string) @string.special))
+  (#any-of? @mname "s" "sound" "n" "note" "scale" "chord" "arp" "gain" "speed" "pan" "cutoff" "lpf" "hpf" "hpq" "delay" "rev" "stack" "cat"))
+
+; Fallback: any remaining identifiers as variables
+(identifier) @variable

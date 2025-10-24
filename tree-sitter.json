@@ -8,7 +8,8 @@
       "scope": "source.strdl",
       "file-types": [
         "strdl",
-        "strudel"
+        "strudel",
+        "str"
       ],
       "injection-regex": "^strudel$",
       "class-name": "TreeSitterStrudel",
