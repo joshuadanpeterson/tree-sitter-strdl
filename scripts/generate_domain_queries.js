@@ -124,12 +124,14 @@ function insertOrReplaceGeneratedBlock(hlsPath, block) {
 
   const functionBlocks = buildAnyOfCapture('function_call', '@function.call', names, 120);
   const methodBlocks = buildAnyOfCapture('method_call', '@method', names, 120);
+  const methodLegacyBlocks = buildAnyOfCapture('method_call', '@function.method', names, 119);
 
   const block = [
     '; Domain-specific identifiers from Strudel LS builtins.json',
     '; This block is auto-generated. Do not edit by hand.',
     functionBlocks,
     methodBlocks,
+    methodLegacyBlocks,
   ].join('\n');
 
   insertOrReplaceGeneratedBlock(highlights, block);
