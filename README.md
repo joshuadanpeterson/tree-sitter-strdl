@@ -58,3 +58,48 @@ npm run local_install
 
 - [Crafting Interpreters by Robert Nystrom](https://www.craftinginterpreters.com/)
 
+## Highlighting and Injections
+
+This repo ships Tree-sitter queries:
+- queries/highlights.scm
+- queries/injections.scm
+- queries/locals.scm
+
+Filetypes recognized:
+- .str, .strdl, .strudel all map to filetype=strdl
+
+Mini-notation strings
+- Strings passed to pattern-bearing functions are tagged as `@string.special`.
+- Functions recognized: s, sound, n, note, scale, chord, arp, gain, speed, pan, cutoff, lpf, hpf, hpq, delay, rev, stack, cat.
+- Neovim injection scaffold: strings in those calls are injected as `strdl-mini` when such a sub-grammar becomes available.
+
+Neovim setup
+- Copy queries into your Neovim path:
+  - npm run local_install
+- Filetype detection (place in init.lua or equivalent):
+
+```lua
+vim.filetype.add({
+  extension = {
+    str = "strdl",
+    strdl = "strdl",
+    strudel = "strdl",
+  },
+})
+```
+
+- nvim-treesitter config:
+
+```lua
+require("nvim-treesitter.configs").setup({
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
+})
+```
+
+- Tips:
+  - :TSPlaygroundToggle
+  - :TSHighlightCapturesUnderCursor
+
