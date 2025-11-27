@@ -144,7 +144,7 @@ module.exports = grammar({
     /* 10. Object Literal Support */
     object: $ => seq(
       '{',
-      commaSep($.pair),
+      commaSepTrailing($.pair),
       '}'
     ),
 
@@ -161,7 +161,7 @@ module.exports = grammar({
     /* 11. Array Literal Support */
     array: $ => seq(
       '[',
-      commaSep($.expression),
+      commaSepTrailing($.expression),
       ']',
     ),
 
