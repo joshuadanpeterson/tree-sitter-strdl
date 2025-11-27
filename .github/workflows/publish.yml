@@ -1,47 +1,32 @@
-name: Publish packages
+name: Publish Package
 
 on:
   push:
-    tags: ["*"]
+    tags:
+      - 'v*'
   workflow_dispatch:
 
 permissions:
-  contents: write
-  id-token: write
-  attestations: write
+  id-token: write  # Required for OIDC
+  contents: read
 
 jobs:
-  github:
-    uses: tree-sitter/workflows/.github/workflows/release.yml@main
-    with:
-      generate: true
-      attestations: true
-  npm:
+  publish:
     runs-on: ubuntu-latest
-    environment: npm
-    permissions:
-      contents: read
-      id-token: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Build WASM
-        run: npx tree-sitter build --wasm
-
-      - name: Generate Parser
-        run: npx tree-sitter generate
-
-      - name: Publish to NPM
-        run: npm publish --provenance --access public
+      # Ensure npm 11.5.1 or later is installed
+      - name: Update npm
+        run: npm install -g npm@latest
+      - run: npm ci
+      - run: npm run build --if-present
+      - run: npm test
+      - run: npm publish --provenance --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
