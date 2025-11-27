@@ -16,6 +16,31 @@ jobs:
       generate: true
       attestations: true
   npm:
-    uses: tree-sitter/workflows/.github/workflows/package-npm.yml@main
-    with:
-      generate: true
+    runs-on: ubuntu-latest
+    environment: npm
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build WASM
+        run: npx tree-sitter build --wasm
+
+      - name: Generate Parser
+        run: npx tree-sitter generate
+
+      - name: Publish to NPM
+        run: npm publish --provenance --access public
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
