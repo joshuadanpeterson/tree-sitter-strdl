@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.2.3](https://github.com/joshuadanpeterson/tree-sitter-strdl/compare/tree-sitter-strdl-v1.2.2...tree-sitter-strdl-v1.2.3) (2025-11-27)
+
+
+### Bug Fixes
+
+* npm publish GitHub Action ([83afd64](https://github.com/joshuadanpeterson/tree-sitter-strdl/commit/83afd642b95ccec93c1d24710545f67504faedeb))
+* use npm trusted publishing (remove token) ([46863ec](https://github.com/joshuadanpeterson/tree-sitter-strdl/commit/46863ecef05edfffbb42579e30abe1bb49b9b538))
+
 ## [1.2.2](https://github.com/joshuadanpeterson/tree-sitter-strdl/compare/tree-sitter-strdl-v1.2.1...tree-sitter-strdl-v1.2.2) (2025-11-27)
 
 
