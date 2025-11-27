@@ -1,6 +1,6 @@
 {
   "name": "tree-sitter-strdl",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "description": "Parser for Strudel, a Tidal Cycles base live coding tool",
   "repository": {
     "type": "git",
