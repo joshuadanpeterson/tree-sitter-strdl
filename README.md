@@ -1,135 +1,138 @@
 # tree-sitter-strdl
 
-Tree-sitter parser for Strudel, a Tidal Cycles based live coding tool.
+![Version](https://img.shields.io/badge/version-1.1.8-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-___
+A [Tree-sitter](https://tree-sitter.github.io/tree-sitter/) parser for **[Strudel](https://strudel.cc/)**, a port of the Tidal Cycles live coding environment to JavaScript.
 
-## Usage
+This project provides robust syntax highlighting and parsing for:
+1.  **Strudel DSL**: The core JavaScript-like chainable syntax (e.g., `s("bd").fast(2)`).
+2.  **Mini-Notation**: The internal pattern language inside strings (e.g., `"bd*2 [sn cp]"`), parsed via a dedicated secondary grammar (`strdl_mini`) and injected automatically.
 
-To install the parser in Neovim:
+---
 
-- Create a file `strudel-integration.lua` in your `~/.config/nvim/lua/` directory:
+## ✨ Features
+
+-   **Complete DSL Parsing**: Covers variable declarations, function chaining, and object/array literals.
+-   **Mini-Notation Injection**: Strings passed to pattern functions (`s`, `note`, `stack`, etc.) are parsed as a separate language, enabling detailed highlighting of beats, groups, and modifiers.
+-   **Neovim Ready**: Includes queries for highlighting, injections, and locals.
+-   **Multi-Language Bindings**: Node.js, Rust, Python, Go, Swift, C.
+
+---
+
+## 🚀 Neovim Integration
+
+To get full highlighting (DSL + Mini-Notation) in Neovim, you need to register both parsers and configure filetype detection.
+
+### 1. Configuration
+Add the following Lua code to your `init.lua` or a separate module (e.g., `lua/plugins/strudel.lua`):
 
 ```lua
----@class ParserConfig
+-- 1. Register Parsers (Main + Mini)
 local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+-- Main Strudel Parser
 parser_config.strudel = {
   install_info = {
-    -- url = "https://github.com/pedrozappa/tree-sitter-strdl", -- local path or git repo
-    url = "~/tree-sitter-strdl/", -- local path to this repo
-    files = { "src/parser.c" }, -- note that some parsers also require src/scanner.c or src/scanner.cc
-    -- optional entries:
-    branch = "main", -- default branch in case of git repo if different from master
-    generate_requires_npm = false, -- if stand-alone parser without npm dependencies
-    requires_generate_from_grammar = false, -- if folder contains pre-generated src/parser.c
+    url = "~/path/to/tree-sitter-strdl", -- ⚠️ Change this to your local path
+    files = { "src/parser.c" },
+    branch = "main",
   },
-  filetype = "strdl", -- if filetype does not match the parser name
+  filetype = "strdl",
 }
 
-vim.api.nvim_create_autocmd("BufRead", {
-  pattern = { "*.strdl", "*.strudel", "*.str" },
-  callback = function()
-    vim.bo.filetype = "strdl"
-  end,
+-- Mini-Notation Parser (for inside strings)
+parser_config.strudel_mini = {
+  install_info = {
+    url = "~/path/to/tree-sitter-strdl/mini", -- ⚠️ Change this to your local path (mini subdir)
+    files = { "src/parser.c" },
+    branch = "main",
+  },
+  filetype = "strdl_mini",
+}
+
+-- 2. Filetype Detection
+vim.filetype.add({
+  extension = {
+    str = "strdl",
+    strdl = "strdl",
+    strudel = "strdl",
+  },
+})
+
+-- 3. Configure nvim-treesitter
+require("nvim-treesitter.configs").setup({
+  highlight = {
+    enable = true,
+    additional_vim_regex_highlighting = false,
+  },
 })
 ```
 
-- On your `~/.config/nvim/init.lua`:
+### 2. Install Queries
+To make the highlighting and injections work, copy the query files (`highlights.scm`, `injections.scm`) to your Neovim runtime.
 
-```lua
-require("strudel-integration")
-```
-
-Run the following to install the parsers schemas:
-
+Run this command from the repo root:
 ```bash
 npm run local_install
 ```
+*(This script copies `queries/*.scm` to `~/.local/share/nvim/lazy/nvim-treesitter/queries/strudel`)*
 
+### 3. Verify
+1.  Restart Neovim.
+2.  Open a `.strdl` file.
+3.  Run `:TSInstall strudel` and `:TSInstall strudel_mini` (if not installed automatically).
+4.  Type `s("bd*4 [sn cp]")`. You should see distinct highlighting inside the string.
 
+---
 
-## Docs
+## 🛠️ Development
 
-- [Tree-sitter](https://tree-sitter.github.io/tree-sitter/)
-- [Strudel.cc](https://strudel.cc/)
-- [Tidal Cycles ](https://tidalcycles.org/)
+### Prerequisites
+-   Node.js & npm
+-   Tree-sitter CLI (`cargo install tree-sitter-cli` or via npm)
+-   C Compiler (clang/gcc)
 
-## Learning Resources
+### Common Commands
 
-- [Crafting Interpreters by Robert Nystrom](https://www.craftinginterpreters.com/)
+| Task | Command |
+| :--- | :--- |
+| **Install Deps** | `npm install` |
+| **Playground** | `npm start` (Builds WASM & opens browser) |
+| **Test (Main)** | `npm test` (Runs corpus tests for DSL) |
+| **Test (Mini)** | `npm run test:mini` (Runs corpus tests for mini-notation) |
+| **Gen (Main)** | `npx tree-sitter generate` |
+| **Gen (Mini)** | `npm run generate:mini` |
 
-## Highlighting and Injections
+### Repository Structure
 
-This repo ships Tree-sitter queries:
-- queries/highlights.scm
-- queries/injections.scm
-- queries/locals.scm
+-   **`grammar.js`**: Definition of the main Strudel language.
+-   **`mini/grammar.js`**: Definition of the Mini-Notation language.
+-   **`queries/`**: Tree-sitter queries for Neovim.
+    -   `highlights.scm`: Syntax coloring rules.
+    -   `injections.scm`: Logic to inject `strdl_mini` into specific function calls.
+-   **`test/corpus/`**: Test cases for the main language.
+-   **`mini/test/corpus/`**: Test cases for the mini-notation.
 
-### Main Parser (`strdl`)
-- Filetypes: `.str`, `.strdl`, `.strudel`
-- Highlights the JavaScript-like DSL.
+---
 
-### Mini-Notation Parser (`strdl_mini`)
-- **New!** A separate grammar for parsing the Tidal mini-notation inside strings.
-- Hosted in the `mini/` directory.
-- Automatically injected into strings passed to pattern functions (e.g., `s("...")`) via `queries/injections.scm`.
+## 🧠 Architecture & Injections
 
-### Neovim Setup
+The parser uses Tree-sitter's [Language Injection](https://tree-sitter.github.io/tree-sitter/syntax-highlighting#language-injection) system.
 
-1.  **Install Parsers**:
+1.  The **Main Parser** identifies function calls like `s("...")`, `note("...")`, `stack("...")`.
+2.  The **Injection Query** (`queries/injections.scm`) matches these specific function names.
+3.  It marks the string content as `injection.content` and requests the `strdl_mini` language.
+4.  The **Mini Parser** takes over for that range, parsing the beats, rests, and modifiers.
 
-    You need to register both the main `strudel` parser and the `strudel_mini` parser.
+**Supported Injection Functions:**
+`s`, `sound`, `n`, `note`, `scale`, `chord`, `arp`, `gain`, `speed`, `pan`, `cutoff`, `lpf`, `hpf`, `hpq`, `delay`, `rev`, `stack`, `cat`.
 
-    Create/update `~/.config/nvim/lua/strudel-integration.lua`:
+---
 
-    ```lua
-    local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+## 📚 References
 
-    -- Main Strudel Parser
-    parser_config.strudel = {
-      install_info = {
-        url = "~/tree-sitter-strdl", -- Path to this repo
-        files = { "src/parser.c" },
-        branch = "main",
-      },
-      filetype = "strdl",
-    }
-
-    -- Mini-Notation Parser
-    parser_config.strudel_mini = {
-      install_info = {
-        url = "~/tree-sitter-strdl/mini", -- Path to mini subdir
-        files = { "src/parser.c" },
-        branch = "main",
-      },
-      filetype = "strdl_mini",
-    }
-    ```
-
-2.  **Filetype Detection**:
-
-    ```lua
-    vim.filetype.add({
-      extension = {
-        str = "strdl",
-        strdl = "strdl",
-        strudel = "strdl",
-      },
-    })
-    ```
-
-3.  **Install Queries**:
-
-    Run the local install script to copy queries to your Neovim runtime:
-
-    ```bash
-    npm run local_install
-    ```
-
-    *Note: Currently, this script copies queries for the main `strudel` language. You may need to manually link or copy `strudel_mini` highlights if/when they are added.*
-
-4.  **Verify**:
-    - Open a `.strdl` file.
-    - `:TSInstall strudel` and `:TSInstall strudel_mini` (if not auto-installed).
-    - Check if `s("bd*4")` has highlighted internals.
+-   [Strudel Website](https://strudel.cc/)
+-   [Tidal Cycles](https://tidalcycles.org/)
+-   [Tree-sitter Documentation](https://tree-sitter.github.io/tree-sitter/)
 
