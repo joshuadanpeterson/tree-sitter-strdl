@@ -136,3 +136,7 @@ The parser uses Tree-sitter's [Language Injection](https://tree-sitter.github.io
 -   [Tidal Cycles](https://tidalcycles.org/)
 -   [Tree-sitter Documentation](https://tree-sitter.github.io/tree-sitter/)
 
+---
+
+> Maintained fork of Strudel Tree Sitter Grammar by [Pedro Zappa](https://github.com/PedroZappa/tree-sitter-strdl) — extends grammar beyond upstream v1.1.8; actively maintained for LSP, Neovim plugin, diagnostics, etc.
+
