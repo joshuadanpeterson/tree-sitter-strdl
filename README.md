@@ -1,6 +1,6 @@
 # tree-sitter-strdl
 
-![Version](https://img.shields.io/badge/version-1.1.8-blue)
+![npm version](https://img.shields.io/npm/v/tree-sitter-strdl?style=flat-square)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
 A [Tree-sitter](https://tree-sitter.github.io/tree-sitter/) parser for **[Strudel](https://strudel.cc/)**, a port of the Tidal Cycles live coding environment to JavaScript.
