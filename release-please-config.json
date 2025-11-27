@@ -2,7 +2,7 @@
   "packages": {
     ".": {
       "release-type": "node",
-      "package-name": "tree-sitter-strudel",
+      "package-name": "tree-sitter-strdl",
       "extra-files": [
         {
           "type": "toml",

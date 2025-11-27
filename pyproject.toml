@@ -3,7 +3,7 @@ requires = ["setuptools>=62.4.0", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "tree-sitter-strudel"
+name = "tree-sitter-strdl"
 description = "Parser for Strudel, a Tidal Cycles base live coding tool"
 version = "1.1.8"
 keywords = ["incremental", "parsing", "tree-sitter", "strudel"]
@@ -13,7 +13,7 @@ classifiers = [
   "Topic :: Text Processing :: Linguistic",
   "Typing :: Typed",
 ]
-authors = [{ name = "Zedro", email = "45104292+PedroZappa@users.noreply.github.com " }]
+authors = [{ name = "Josh Peterson", email = "joshuadanpeterson@gmail.com" }]
 requires-python = ">=3.10"
 license.text = "MIT"
 readme = "README.md"
