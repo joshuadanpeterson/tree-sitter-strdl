@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.1](https://github.com/joshuadanpeterson/tree-sitter-strdl/compare/tree-sitter-strdl-v1.2.0...tree-sitter-strdl-v1.2.1) (2025-11-27)
+
+
+### Bug Fixes
+
+* resolve CI/CD workflow and badge issues ([3e79284](https://github.com/joshuadanpeterson/tree-sitter-strdl/commit/3e79284f902e5b24f0d191c45d22f3c74a6f0d65))
+
 ## [1.2.0](https://github.com/joshuadanpeterson/tree-sitter-strdl/compare/tree-sitter-strdl-v1.1.8...tree-sitter-strdl-v1.2.0) (2025-11-27)
 
 
