@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.2](https://github.com/joshuadanpeterson/tree-sitter-strdl/compare/v1.3.1...v1.3.2) (2025-11-27)
+
+
+### Bug Fixes
+
+* trigger release-please ([a6bd2db](https://github.com/joshuadanpeterson/tree-sitter-strdl/commit/a6bd2dbdc57102cc623c9b8007b2fe6363406255))
+
 ## [1.3.1](https://github.com/joshuadanpeterson/tree-sitter-strdl/compare/v1.3.0...v1.3.1) (2025-11-27)
 
 
