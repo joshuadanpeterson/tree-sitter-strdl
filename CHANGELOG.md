@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.3](https://github.com/joshuadanpeterson/tree-sitter-strdl/compare/v1.3.2...v1.3.3) (2025-11-27)
+
+
+### Bug Fixes
+
+* add tree-sitter as dev dependency ([523a010](https://github.com/joshuadanpeterson/tree-sitter-strdl/commit/523a01045dc5ff9102c8d30b6d538d3399f78b5d))
+
 ## [1.3.2](https://github.com/joshuadanpeterson/tree-sitter-strdl/compare/v1.3.1...v1.3.2) (2025-11-27)
 
 
