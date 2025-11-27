@@ -2,7 +2,19 @@
   "packages": {
     ".": {
       "release-type": "node",
-      "package-name": "tree-sitter-strdl"
+      "package-name": "tree-sitter-strdl",
+      "extra-files": [
+        {
+          "type": "toml",
+          "path": "Cargo.toml",
+          "jsonpath": "package.version"
+        },
+        {
+          "type": "toml",
+          "path": "pyproject.toml",
+          "jsonpath": "project.version"
+        }
+      ]
     }
   },
   "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json"
