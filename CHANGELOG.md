@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.4](https://github.com/joshuadanpeterson/tree-sitter-strdl/compare/v1.3.3...v1.3.4) (2025-11-27)
+
+
+### Bug Fixes
+
+* revert npm update ([8750e7b](https://github.com/joshuadanpeterson/tree-sitter-strdl/commit/8750e7b3c60a13a19fcc00070c83480e3cb2f473))
+
 ## [1.3.3](https://github.com/joshuadanpeterson/tree-sitter-strdl/compare/v1.3.2...v1.3.3) (2025-11-27)
 
 
