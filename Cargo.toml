@@ -7,7 +7,7 @@ license = "MIT"
 readme = "README.md"
 keywords = ["incremental", "parsing", "tree-sitter", "strudel"]
 categories = ["parser-implementations", "parsing", "text-editors"]
-repository = "https://github.com/pedrozappa/tree-sitter-strdl"
+repository = "https://github.com/joshuadanpeterson/tree-sitter-strdl"
 edition = "2021"
 autoexamples = false
 
