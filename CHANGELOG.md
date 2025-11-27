@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.5](https://github.com/joshuadanpeterson/tree-sitter-strdl/compare/tree-sitter-strdl-v1.2.4...tree-sitter-strdl-v1.2.5) (2025-11-27)
+
+
+### Bug Fixes
+
+* configure inline npm publish with trusted publishing environment ([f2daf26](https://github.com/joshuadanpeterson/tree-sitter-strdl/commit/f2daf260900992165a28e3ce3fa314b1e2ab9bac))
+
 ## [1.2.4](https://github.com/joshuadanpeterson/tree-sitter-strdl/compare/tree-sitter-strdl-v1.2.3...tree-sitter-strdl-v1.2.4) (2025-11-27)
 
 
