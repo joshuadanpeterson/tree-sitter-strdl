@@ -65,41 +65,71 @@ This repo ships Tree-sitter queries:
 - queries/injections.scm
 - queries/locals.scm
 
-Filetypes recognized:
-- .str, .strdl, .strudel all map to filetype=strdl
+### Main Parser (`strdl`)
+- Filetypes: `.str`, `.strdl`, `.strudel`
+- Highlights the JavaScript-like DSL.
 
-Mini-notation strings
-- Strings passed to pattern-bearing functions are tagged as `@string.special`.
-- Functions recognized: s, sound, n, note, scale, chord, arp, gain, speed, pan, cutoff, lpf, hpf, hpq, delay, rev, stack, cat.
-- Neovim injection scaffold: strings in those calls are injected as `strdl-mini` when such a sub-grammar becomes available.
+### Mini-Notation Parser (`strdl_mini`)
+- **New!** A separate grammar for parsing the Tidal mini-notation inside strings.
+- Hosted in the `mini/` directory.
+- Automatically injected into strings passed to pattern functions (e.g., `s("...")`) via `queries/injections.scm`.
 
-Neovim setup
-- Copy queries into your Neovim path:
-  - npm run local_install
-- Filetype detection (place in init.lua or equivalent):
+### Neovim Setup
 
-```lua
-vim.filetype.add({
-  extension = {
-    str = "strdl",
-    strdl = "strdl",
-    strudel = "strdl",
-  },
-})
-```
+1.  **Install Parsers**:
 
-- nvim-treesitter config:
+    You need to register both the main `strudel` parser and the `strudel_mini` parser.
 
-```lua
-require("nvim-treesitter.configs").setup({
-  highlight = {
-    enable = true,
-    additional_vim_regex_highlighting = false,
-  },
-})
-```
+    Create/update `~/.config/nvim/lua/strudel-integration.lua`:
 
-- Tips:
-  - :TSPlaygroundToggle
-  - :TSHighlightCapturesUnderCursor
+    ```lua
+    local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
+    -- Main Strudel Parser
+    parser_config.strudel = {
+      install_info = {
+        url = "~/tree-sitter-strdl", -- Path to this repo
+        files = { "src/parser.c" },
+        branch = "main",
+      },
+      filetype = "strdl",
+    }
+
+    -- Mini-Notation Parser
+    parser_config.strudel_mini = {
+      install_info = {
+        url = "~/tree-sitter-strdl/mini", -- Path to mini subdir
+        files = { "src/parser.c" },
+        branch = "main",
+      },
+      filetype = "strdl_mini",
+    }
+    ```
+
+2.  **Filetype Detection**:
+
+    ```lua
+    vim.filetype.add({
+      extension = {
+        str = "strdl",
+        strdl = "strdl",
+        strudel = "strdl",
+      },
+    })
+    ```
+
+3.  **Install Queries**:
+
+    Run the local install script to copy queries to your Neovim runtime:
+
+    ```bash
+    npm run local_install
+    ```
+
+    *Note: Currently, this script copies queries for the main `strudel` language. You may need to manually link or copy `strudel_mini` highlights if/when they are added.*
+
+4.  **Verify**:
+    - Open a `.strdl` file.
+    - `:TSInstall strudel` and `:TSInstall strudel_mini` (if not auto-installed).
+    - Check if `s("bd*4")` has highlighted internals.
 

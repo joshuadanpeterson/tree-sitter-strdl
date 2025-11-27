@@ -14,6 +14,15 @@
       "injection-regex": "^strudel$",
       "class-name": "TreeSitterStrudel",
       "highlights": "queries/highlights.scm"
+    },
+    {
+      "name": "strudel_mini",
+      "path": "mini",
+      "camelcase": "StrudelMini",
+      "title": "Strudel Mini",
+      "scope": "source.strdl.mini",
+      "injection-regex": "^strdl_mini$",
+      "class-name": "TreeSitterStrudelMini"
     }
   ],
   "metadata": {
