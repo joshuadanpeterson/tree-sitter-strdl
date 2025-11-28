@@ -20,12 +20,26 @@ This project provides robust syntax highlighting and parsing for:
 
 ---
 
+## 📦 Installation (NPM)
+
+The grammar is available on npm:
+
+```bash
+npm i tree-sitter-strdl
+```
+
+This is useful if you are building a tool that uses the grammar (like a VS Code extension or a language server) and want to consume the pre-built WASM or Node bindings.
+
+---
+
 ## 🚀 Neovim Integration
 
 To get full highlighting (DSL + Mini-Notation) in Neovim, you need to register both parsers and configure filetype detection.
 
 ### 1. Configuration
 Add the following Lua code to your `init.lua` or a separate module (e.g., `lua/plugins/strudel.lua`):
+
+> **Note**: If you want to use the stable release from npm instead of building locally, see the "Install from NPM" section below.
 
 ```lua
 -- 1. Register Parsers (Main + Mini)
